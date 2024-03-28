@@ -1,0 +1,1 @@
+ffmpeg -i devplenio.flv -codec:v h264 -codec:a aac -map 0 -f hls -hls_time 10 -hls_list_size 0 output.m3u8
