@@ -37,15 +37,11 @@ def lista():
     for arquivo in arquivos:
         if arquivo[1] == 'm3u8':
             lista.append(arquivo[0])
-    print("###########")
-    print(lista)
-    print("###########")
     return render_template('lista.html', lives=lista)
 #                                                                  #
 #                                                                  #
 #                                                                  #
 ####################################################################
-
 
 tHls.start()
 flask.run(debug=True)

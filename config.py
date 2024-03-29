@@ -1,0 +1,1 @@
+___HOST_HTTP = 'http://localhost'
