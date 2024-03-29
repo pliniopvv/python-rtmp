@@ -105,7 +105,11 @@ class SimpleServer(SimpleRTMPServer):
 
 
 async def main():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
+    current_dir = os.path.dirname(os.path.abspath(__file__)) + '/lives'
+    try:
+        os.makedirs('lives')
+    except:
+        pass
     server = SimpleServer(output_directory=current_dir)
     await server.create(host="0.0.0.0", port=1935)
     await server.start()
