@@ -105,7 +105,7 @@ class SimpleServer(SimpleRTMPServer):
 
 
 async def main():
-    current_dir = os.path.dirname(os.path.abspath(__file__)) + '/lives'
+    current_dir = os.path.dirname(os.path.abspath(__file__)) + '/../lives'
     try:
         os.makedirs('lives')
     except:

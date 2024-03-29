@@ -31,14 +31,15 @@ def home(live):
     return render_template('player.html', live=live)
 
 @flask.route('/')
-def list():
+def lista():
     arquivos = list(map(lambda arquivo: arquivo.split('.'), os.listdir('lives')))
-
     lista = []
     for arquivo in arquivos:
         if arquivo[1] == 'm3u8':
             lista.append(arquivo[0])
-
+    print("###########")
+    print(lista)
+    print("###########")
     return render_template('lista.html', lives=lista)
 #                                                                  #
 #                                                                  #
