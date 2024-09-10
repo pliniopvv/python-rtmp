@@ -44,4 +44,4 @@ def lista():
 ####################################################################
 
 tHls.start()
-flask.run(debug=True)
+flask.run(debug=False)
