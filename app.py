@@ -6,6 +6,8 @@ from threading import Thread
 
 from flask import Flask, render_template
 
+import jinja2.ext
+
 ####################################################################
 #                                                                  #
 #  SERVIDOR RTMP                                                   #
@@ -23,8 +25,17 @@ tHls = Thread(target=hls, args=[])
 #                                                                  #
 #   SERVIDOR HTTP                                                  #
 #                                                                  #
-flask = Flask(__name__, static_folder='lives', static_url_path='/streams')
+flask = Flask(__name__, static_folder='lives', static_url_path='/streams', template_folder='templates')
 
+# from pathlib import Path
+
+# td = Path(__file__).parent.parent.parent / 'templates'
+# sd = Path(__file__).parent.parent.parent / 'lives'
+
+# flask = Flask(__name__, template_folder=td.resolve(), static_folder=sd.resolve(), static_url_path='/streams')
+# print(sd.resolve())
+# print(td.resolve())
+# flask.config.from_pyfile
 
 @flask.route('/play/<live>')
 def home(live):
@@ -44,4 +55,4 @@ def lista():
 ####################################################################
 
 tHls.start()
-flask.run(debug=False)
+flask.run('0.0.0.0', debug=False)

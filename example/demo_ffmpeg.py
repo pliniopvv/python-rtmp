@@ -10,10 +10,9 @@ from pyrtmp.flv import FLVMediaType, FLVWriter
 from pyrtmp.rtmp import RTMPProtocol, SimpleRTMPController, SimpleRTMPServer
 from pyrtmp.session_manager import SessionManager
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.NOTSET)
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-
+logger.setLevel(logging.NOTSET)
 
 class RTMP2SocketController(SimpleRTMPController):
     def __init__(self, output_directory: str):
@@ -24,7 +23,7 @@ class RTMP2SocketController(SimpleRTMPController):
         publishing_name = message.publishing_name
         prefix = os.path.join(self.output_directory, f"{publishing_name}")
         session.state = RemoteProcessFLVWriter()
-        logger.debug(f"output to {prefix}.m3u8")
+        # logger.debug(f"output to {prefix}.m3u8")
         await session.state.initialize(
             # command=f"ffmpeg -y -i pipe:0 -c:v copy -c:a copy -f flv {prefix}.flv",
             command=f"ffmpeg -y -i pipe:0 -c:v copy -c:a copy -f hls {prefix}.m3u8",
